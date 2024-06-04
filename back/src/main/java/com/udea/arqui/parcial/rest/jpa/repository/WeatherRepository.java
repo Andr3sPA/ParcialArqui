@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.udea.arqui.parcial.rest.jpa.model.Weather;
 
 @Repository
-public interface WeatherRepository extends CrudRepository<Long, Weather> {
+public interface WeatherRepository extends CrudRepository<Weather, Long> {
 
 }
