@@ -15,6 +15,13 @@ public class WeatherService {
     @Autowired
     private CityRepository cityRepository;
 
+    /**
+     * Retrieves the weather information for a specified city and country.
+     *
+     * @param city the name of the city
+     * @param country the name of the country
+     * @return the weather information of the city, or {@code null} if the city is not found
+     */
     public Weather getWeather(String city, String country) {
         Optional<City> weather = cityRepository.findByNameAndCountry(city, country);
 
@@ -24,6 +31,14 @@ public class WeatherService {
         return weather.get().getWeather();
     }
 
+
+    /**
+     * Assigns the given weather information to a specified city.
+     *
+     * @param weather the weather information to assign
+     * @param cityName the name of the city to which the weather information is to be assigned
+     * @return a message indicating whether the assignment was successful or if the city does not exist
+     */
     public String assignWeather(Weather weather, String cityName) {
         Optional<City> city = cityRepository.findByName(cityName);
 
@@ -35,4 +50,5 @@ public class WeatherService {
         cityRepository.save(actualCity);
         return "Asignacion exitosa";
     }
+
 }
