@@ -1,0 +1,22 @@
+.container-card{
+    display: flex;
+    justify-content: space-between;
+    width: 40%;
+    border: 1px solid #8AB1D8;
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+}
+
+.left {
+    position: relative;
+    left:0;
+}
+.right {
+    position: relative;
+    right: 0;
+}
