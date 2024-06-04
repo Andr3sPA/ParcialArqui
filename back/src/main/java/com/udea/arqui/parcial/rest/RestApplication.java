@@ -1,18 +1,16 @@
 package com.udea.arqui.parcial.rest;
 
+import java.util.List;
+
 import org.springdoc.core.customizers.OpenApiCustomizer;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.web.cors.CorsConfiguration;
-import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
-import org.springframework.web.filter.CorsFilter;
 
 import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.servers.Server;
 
 @SpringBootApplication
-@EnableAutoConfiguration
 public class RestApplication {
 
     public static void main(String[] args) {
@@ -21,23 +19,17 @@ public class RestApplication {
 
     @Bean
     OpenApiCustomizer openApiCustomizer() {
+        Server devServer = new Server();
+        devServer.setUrl("http://localhost:8080");
+
+        Server deployServer = new Server();
+        deployServer.setUrl("https://9mtl64dl-8080.use2.devtunnels.ms");
+
         return openApi -> {
             openApi.info(new Info()
                     .title("Weather API")
-                    .description("Basis API for information about cities' weather"));
+                    .description("Basic API for information about cities' weather"))
+                    .servers(List.of(deployServer, devServer));
         };
-    }
-
-    @Bean
-    CorsFilter corsFilter()
-    {
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        CorsConfiguration config = new CorsConfiguration();
-        config.setAllowCredentials(false);
-        config.addAllowedOrigin("*");
-        config.addAllowedHeader("*");
-        config.addAllowedMethod("*");
-        source.registerCorsConfiguration("/**", config);
-        return new CorsFilter(source);
     }
 }

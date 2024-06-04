@@ -46,6 +46,7 @@ public class WeatherService {
             return "La ciudad %s no existe".formatted(cityName);
 
         City actualCity = city.get();
+        weather.setId(actualCity.getWeather().getId());
         actualCity.setWeather(weather);
         cityRepository.save(actualCity);
         return "Asignacion exitosa";
