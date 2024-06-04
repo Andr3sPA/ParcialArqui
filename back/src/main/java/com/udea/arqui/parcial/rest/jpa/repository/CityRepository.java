@@ -12,4 +12,6 @@ public interface CityRepository extends CrudRepository<City, Long> {
 
     Optional<City> findByNameAndCountry(String name, String country);
 
+    Optional<City> findByName(String name);
+
 }
