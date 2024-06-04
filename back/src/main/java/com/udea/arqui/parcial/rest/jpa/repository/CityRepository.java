@@ -7,5 +7,6 @@ import com.udea.arqui.parcial.rest.jpa.model.City;
 
 @Repository
 public interface CityRepository extends CrudRepository<Long, City> {
+        City findByName(String name);
 
 }
