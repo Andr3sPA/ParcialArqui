@@ -1,18 +1,22 @@
+import { useState } from "react";
 import "../styles/components/Card.css";
+import { useWeatherInfo } from "../hooks/useWeatherInfo";
 
-export const Card = () => {
+export const Card = ({ city }) => {
+  const weatherInfo = useWeatherInfo(city.name, city.country);
+  console.log(weatherInfo);
   return (
     <div className="container-card">
       <section className="left">
-        <b>Ciudad</b>
-        <p>País</p>
+        <b>Ciudad: {city?.name}</b>
+        <p>País: {city?.country}</p>
       </section>
       <hr />
       <section className="right">
-        <p>Clima</p>
-        <p>Temperatura</p>
-        <p>%Humedad</p>
-        <p>%precipitacion</p>
+        <b>Clima</b>
+        <p> Temperatura: {weatherInfo?.temperature}</p>
+        <p>% Humedad: {weatherInfo?.humidity}</p>
+        <p>% Precipitacion: {weatherInfo?.precipitation}</p>
       </section>
     </div>
   );
