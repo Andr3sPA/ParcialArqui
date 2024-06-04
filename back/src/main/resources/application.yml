@@ -1,8 +1,12 @@
+
 server:
   port: 8080
 
 # Oracle #
 spring:
+  output:
+    ansi:
+      enabled: always
   application:
     name: rest
   datasource:
