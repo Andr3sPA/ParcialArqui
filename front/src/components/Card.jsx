@@ -4,7 +4,7 @@ import { useWeatherInfo } from "../hooks/useWeatherInfo";
 
 export const Card = ({ city }) => {
   const weatherInfo = useWeatherInfo(city.name, city.country);
-  console.log(weatherInfo);
+
   return (
     <div className="container-card">
       <section className="left">
@@ -14,7 +14,7 @@ export const Card = ({ city }) => {
       <hr />
       <section className="right">
         <b>Clima</b>
-        <p> Temperatura: {weatherInfo?.temperature}</p>
+        <p>Temperatura(°C): {weatherInfo?.temperature}</p>
         <p>% Humedad: {weatherInfo?.humidity}</p>
         <p>% Precipitacion: {weatherInfo?.precipitation}</p>
       </section>
