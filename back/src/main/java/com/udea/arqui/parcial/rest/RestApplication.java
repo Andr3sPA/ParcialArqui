@@ -23,7 +23,7 @@ public class RestApplication {
         devServer.setUrl("http://localhost:8080");
 
         Server deployServer = new Server();
-        deployServer.setUrl("https://9mtl64dl-8080.use2.devtunnels.ms");
+        deployServer.setUrl("http://ec2-3-15-171-131.us-east-2.compute.amazonaws.com");
 
         return openApi -> {
             openApi.info(new Info()
