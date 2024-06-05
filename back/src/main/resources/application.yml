@@ -10,10 +10,10 @@ spring:
   application:
     name: rest
   datasource:
-    url: jdbc:oracle:thin:@localhost:1521:XE
-    driverClassName: oracle.jdbc.driver.OracleDriver
-    username: ${ORACLE_USR}
-    password: ${ORACLE_PWD}
+    url: ${DB_URL}
+    driverClassName: org.postgresql.Driver
+    username: ${DB_USR}
+    password: ${DB_PWD}
   jpa:
     show-sql: true
     hibernate:
